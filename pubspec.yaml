@@ -38,6 +38,10 @@ dependencies:
   provider:
   http:
   shared_preferences:
+  google_sign_in:
+  firebase_auth:
+  firebase_core:
+  logger:
 
 dev_dependencies:
   flutter_test:

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:auth_login_api/main.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider with ChangeNotifier {
@@ -23,11 +24,14 @@ class AuthProvider with ChangeNotifier {
 
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
-        print(data['token']);
+
+        print('Token :- ${data['token']}');
+        Logger().t(data);
         print('Login successfully');
         setLoading(false);
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('token', data['token']);
+
         navigatorKey.currentState?.pushNamed('homepage');
       } else {
         print('failed');

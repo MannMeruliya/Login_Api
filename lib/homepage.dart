@@ -1,4 +1,7 @@
+import 'package:auth_login_api/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'main.dart';
@@ -11,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -19,8 +23,14 @@ class _HomePageState extends State<HomePage> {
           SharedPreferences prefs = await SharedPreferences.getInstance();
           prefs.setString('token', '');
           navigatorKey.currentState?.pushReplacementNamed('loginpage');
-        }, icon: Icon(Icons.check),),
-        title: Text("HomePage"),
+        }, icon: const Icon(Icons.check),),
+        title: const Text("HomePage"),
+      ),
+      body: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(child: Text("Hello",style: TextStyle(fontSize: 30,color: Colors.white),))
+        ],
       ),
     );
   }

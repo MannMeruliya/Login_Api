@@ -10,7 +10,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController emailController = TextEditingController();
+  TextEditingController usernamecontroller = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -26,10 +26,10 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              controller: emailController,
+              controller: usernamecontroller,
               decoration: const InputDecoration(
-                label: Text("eve.holt@reqres.in"),
-                hintText: 'Email',
+                label: Text("Enter Username"),
+                hintText: 'username',
               ),
             ),
             const SizedBox(height: 20,),
@@ -37,14 +37,14 @@ class _LoginPageState extends State<LoginPage> {
               controller: passwordController,
               obscureText: true,
               decoration: const InputDecoration(
-                  label: Text("cityslicka"),
+                  label: Text("Enter Password"),
                   hintText: 'password'
               ),
             ),
             const SizedBox(height: 40,),
             GestureDetector(
               onTap: () {
-                authProvider.login(emailController.text.toString(),passwordController.text.toString());
+                authProvider.login(usernamecontroller.text.toString(),passwordController.text.toString());
               },
               child: Container(
                 height: 50,
